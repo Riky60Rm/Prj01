@@ -48,9 +48,39 @@ def createTable() :
 
 def insert_rows() :
 
-    multiple_columns = [(1, 1, 'Descrizione 1'),
-                        (1, 2, 'Descrizione 2'),
-                        (1, 3, 'Descrizione 3')]
+    multiple_columns = [(1, 1, 'Ebay Delivery address'),
+                        (1, 2, 'Cartoleria Cigola'),
+                        (1, 3, 'NFS'),
+                        (1, 4, ''),
+                        (1, 5, ''),
+                        (1, 6, ''),
+                        (1, 7, ''),
+                        (1, 8, ''),
+                        (1, 9, ''),
+                        (1, 10, ''),
+                        (1, 11, ''),
+                        (1, 12, ''),
+                        (1, 13, ''),
+                        (1, 14, ''),
+                        (1, 15, ''),
+                        (1, 16, ''),
+                        (1, 17, ''),
+                        (1, 18, ''),
+                        (1, 19, ''),
+                        (1, 20, ''),
+                        (1, 21, ''),
+                        (1, 50, 'Mount NFS disks'),
+                        # Menu level 3
+                        (3, 31, 'restart NFS'),
+                        (3, 32, 'show NFS status'),
+                        (3, 33, ''),
+                        (3, 34, ''),
+                        (3, 35, ''),
+                        (3, 36, ''),
+                        (3, 37, ''),
+                        (3, 38, ''),
+                        (3, 39, ''),
+                        ]
 
     count = csr_obj.executemany("INSERT INTO menu_tbl VALUES (?,?,?)", multiple_columns)
     conn_obj.commit()
@@ -70,7 +100,7 @@ def insert_rows() :
 # =================================================================================
 
 try:
-    conn_obj = create_connection('Menu.db')
+    conn_obj = create_connection('/home/riky60/PycharmProjects/Prj01/Menu.db')
     # cursor object
     csr_obj = conn_obj.cursor()
     createTable()
