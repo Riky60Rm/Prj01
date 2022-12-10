@@ -31,6 +31,8 @@ for key, x in RELEASE_DATA :
 print("==========================================================================")
 len_delimiter = 100
 script_name = os.path.basename(__file__)
+user = os.environ.get('USER')
+riky60 = "riky60"
 #logging.basicConfig(filename='Menu01.log', encoding='utf-8', level=logging.INFO)
 # logging.debug('This message should go to the log file')
 # logging.info('So should this')
@@ -79,7 +81,10 @@ menu50 = {
 def print_menu(mnu):
 
     sprtr = chr(124)  # separator char
-    hlf_scr = 40      # half screen value
+    if user == riky60 :
+        hlf_scr = 40      # half screen value
+    else :
+        hlf_scr = 20  # half screen value
     if mnu == 1 :     # menu level
         menu_options = menu01
     elif mnu == 3 :
