@@ -32,7 +32,8 @@ print("=========================================================================
 len_delimiter = 100
 script_name = os.path.basename(__file__)
 user = os.environ.get('USER')
-riky60 = "riky60"
+pc_user = "riky60"
+# pc_user = "pi"
 #logging.basicConfig(filename='Menu01.log', encoding='utf-8', level=logging.INFO)
 # logging.debug('This message should go to the log file')
 # logging.info('So should this')
@@ -81,10 +82,10 @@ menu50 = {
 def print_menu(mnu):
 
     sprtr = chr(124)  # separator char
-    if user == riky60 :
-        hlf_scr = 40      # half screen value
+    if user == pc_user :
+        hlf_scr = 40   # half screen value
     else :
-        hlf_scr = 20  # half screen value
+        hlf_scr = 28  # half screen value
     if mnu == 1 :     # menu level
         menu_options = menu01
     elif mnu == 3 :
@@ -532,20 +533,45 @@ def display_title_bar() :
     iptime = subprocess.run(["uptime", "-p"], stdout=subprocess.PIPE)
     uptime = iptime.stdout.decode()
 
+    if user == pc_user :
+        len_delimiter = 100
+    else :
+        len_delimiter = 64
     curr_time = datetime.datetime.now()
     screen_clear()
     title1 = Fore.LIGHTYELLOW_EX + "=" * len_delimiter + Style.RESET_ALL
     release = Fore.RED + RELEASE_DATA['NAME'] + ' ' + RELEASE_DATA['VERSION'] + Style.RESET_ALL
     name_len = len(RELEASE_DATA['VERSION_CODENAME'])
-    title2 = str(curr_time)[: 19] + " " * 19 + release + " " * (18 - name_len) \
-            + "code name >" + Fore.LIGHTGREEN_EX + RELEASE_DATA['VERSION_CODENAME'] + \
-             Style.RESET_ALL + "<"
-    str_scrname = "script name " + script_name
-    num = 40 - len(str_scrname)
-    str_scrname = "script name " + Fore.RED + script_name + Fore.RESET
-    num1 = 39 - len(" Archit : ") - len(arch[0])
+    if user == pc_user:
+        title2 = str(curr_time)[: 19] + " " * 19 + release + " " * (20 - name_len) \
+                 + "Ubuntu code name >" + Fore.LIGHTGREEN_EX + RELEASE_DATA['VERSION_CODENAME'] + \
+                 Style.RESET_ALL + "<"
+    else :
+        title2 = str(curr_time)[: 16] + " " * 2 + release + " " * (8 - name_len) \
+                + "code nm " + Fore.LIGHTGREEN_EX + RELEASE_DATA['VERSION_CODENAME'] + \
+                 Style.RESET_ALL + ""
+
+
+    if user == pc_user:
+        str_scrname = "script name " + script_name
+        num = 40 - len(str_scrname)
+        str_scrname = "script name " + Fore.RED + script_name + Fore.RESET
+    else :
+        str_scrname = "scrp name " + script_name
+        num = 30 - len(str_scrname)
+        str_scrname =  Fore.RED + script_name + Fore.RESET
+
+
+    if user == pc_user:
+        num1 = 39 - len(" Archit : ") - len(arch[0])
+    else :
+        num1 = 19 - len(" Archit : ") - len(arch[0])
+
     archit = " " * (num1) + " Archit : " + Fore.LIGHTGREEN_EX + arch[0] + Fore.RESET
-    title3 =   str_scrname + " " * (num) + "Menu for shell launch" +  archit
+    if user == pc_user:
+        title3 =   str_scrname + " " * (num) + "Menu for shell launch" +  archit
+    else:
+        title3 = str_scrname + " " * (num + 1) + "Shell Menu " + archit
     title4 = "uptime is : " + uptime.strip()
 
     title5 = title1
