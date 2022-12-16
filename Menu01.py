@@ -33,7 +33,7 @@ script_name = os.path.basename(__file__)
 
 #=======================================================================================
 menu01 = {
-    1: "Ebay Delivery address", 2: "Cartoleria Cigola", 3: "NFS", 4: "",
+    1: "Ebay Delivery address", 2: "Cartoleria Cigola", 3: "NFS", 4: "Find duplicate files with fdupes",
     5: "", 6: "", 7: "", 8: "", 9: "", 10: "",
     11: "", 12: "", 13: "", 14: "", 15: "", 16: "",
     17: "", 18: "", 19: "", 20: "", 21: "", 50: "Mount NFS disks"
@@ -113,6 +113,29 @@ def print_menu(mnu):
             sexit =  Fore.GREEN + " x) " + Fore.RESET + "Go back "
     print(sexit)
     print(" ")
+
+#=======================================================================================
+def fdupes() :
+    # search for duplicates of files
+    print("Search duplicates files with fdupes (comparing MD5 signature of files )")
+    print("  ")
+    dirToCheck = input("Please type the directory to control (full Path) ")
+    if dirToCheck :
+        tmpan = input("for the directory given follow subdirectories encountered within ? (y/N) ")
+        param = ""
+        if tmpan == "y" :
+            param = "-r"
+        tmpan = input("preserve the first file in each set of duplicates and delete the rest? (y/N) ")
+        if tmpan == "y" :
+            param = param + "dN"
+        result = input("Would you like to create a file with the result ? (full path+name), Enter will not create a file ")
+        if result :
+            cmd = "fdupes " + param + " " + dirToCheck + " >" + result
+        else :
+            cmd = "fdupes "+ param + " " + dirToCheck
+        os.system(cmd)
+        #print(cmd)
+        void = input("Press a key to continue")
 
 #=======================================================================================
 def set_windows_size() :
@@ -201,7 +224,7 @@ def get_user_input() :
         # print(result)
         if (choice == 'x' ) or (choice == 'X'):
             if mn_lev == 1 :
-                exit(0)
+                sys.exit(0)
             elif mn_lev == 3 :
                 mn_lev = 1
             elif mn_lev == 5 :
@@ -226,6 +249,11 @@ def get_user_input() :
                 # ====================================================================
                 if int_choice == 3 :
                     mn_lev = 3
+                    break
+                # ====================================================================
+                if int_choice == 4 :
+                    if mn_lev == 1 :
+                        fdupes()
                     break
                 # ====================================================================
                 elif int_choice == 31 :
@@ -465,5 +493,8 @@ mn_lev = 1
 while True :
     print_menu(mn_lev)
     get_user_input()
+
+
+
 
 
