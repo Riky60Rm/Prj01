@@ -52,7 +52,8 @@ pc_user = "riky60"
 #=======================================================================================
 menu01 = {
     1: "Mount Rpi3B+Download", 2: "Umount Rpi3B+Download", 3: "Mount /var/www/html/mnt", 4: "Umount /var/www/html/mnt",
-    5: "Mount /media/FreeNas", 6: "Umount /media/FreeNas", 7: "minidlna status", 8: "restart minidlna", 9: "hdparm", 10: "",
+    5: "Mount /media/FreeNas", 6: "Umount /media/FreeNas", 7: "minidlna status", 8: "restart minidlna", 9: "hdparm",
+    10: "ListDir (move all the series files in one dir) ",
     11: "", 12: "", 13: "", 14: "", 15: "sudo mousepad /etc/minidlna.conf", 16: "",
     17: "", 18: "", 19: "", 20: "", 21: "", 50: ""
 }
@@ -308,7 +309,7 @@ def get_user_input() :
                 if int_choice == 10 :
                     if mn_lev == 1:
                         #print('UMount Phenom 2TbF on /media/2TbFb')
-                        cmd = "sudo systemctl restart minidlna"
+                        cmd = "/home/riky60/Shell/listdir.sh"
                         os.system(cmd)
                     break
 
@@ -543,8 +544,8 @@ def display_title_bar() :
     release = Fore.RED + RELEASE_DATA['NAME'] + ' ' + RELEASE_DATA['VERSION'] + Style.RESET_ALL
     name_len = len(RELEASE_DATA['VERSION_CODENAME'])
     if user == pc_user:
-        title2 = str(curr_time)[: 19] + " " * 19 + release + " " * (20 - name_len) \
-                 + "Ubuntu code name >" + Fore.LIGHTGREEN_EX + RELEASE_DATA['VERSION_CODENAME'] + \
+        title2 = str(curr_time)[: 19] + " " * 19 + release + " " * (18 - name_len) \
+                 + "code name >" + Fore.LIGHTGREEN_EX + RELEASE_DATA['VERSION_CODENAME'] + \
                  Style.RESET_ALL + "<"
     else :
         title2 = str(curr_time)[: 16] + " " * 2 + release + " " * (8 - name_len) \
