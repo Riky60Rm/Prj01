@@ -34,7 +34,7 @@ script_name = os.path.basename(__file__)
 #=======================================================================================
 menu01 = {
     1: "Ebay Delivery address", 2: "Cartoleria Cigola", 3: "NFS", 4: "Find duplicate files with fdupes",
-    5: "", 6: "", 7: "", 8: "", 9: "", 10: "",
+    5: "Get multimedia file info", 6: "", 7: "", 8: "", 9: "", 10: "",
     11: "", 12: "", 13: "", 14: "", 15: "", 16: "",
     17: "", 18: "", 19: "", 20: "", 21: "", 50: "Mount NFS disks"
 }
@@ -113,6 +113,16 @@ def print_menu(mnu):
             sexit =  Fore.GREEN + " x) " + Fore.RESET + "Go back "
     print(sexit)
     print(" ")
+
+#=======================================================================================
+def mediainfo() :
+    print("Get multimedia file info")
+    print("  ")
+    fileinfo = input("Please type the file name with full path ")
+    cmd = "mediainfo " + fileinfo
+    print(cmd)
+    os.system(cmd)
+    void = input("Press a key to continue")
 
 #=======================================================================================
 def fdupes() :
@@ -254,6 +264,11 @@ def get_user_input() :
                 if int_choice == 4 :
                     if mn_lev == 1 :
                         fdupes()
+                    break
+                # ====================================================================
+                if int_choice == 5 :
+                    if mn_lev == 1 :
+                        mediainfo()
                     break
                 # ====================================================================
                 elif int_choice == 31 :
