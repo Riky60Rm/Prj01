@@ -34,7 +34,7 @@ script_name = os.path.basename(__file__)
 #=======================================================================================
 menu01 = {
     1: "Ebay Delivery address", 2: "Cartoleria Cigola", 3: "NFS", 4: "Find duplicate files with fdupes",
-    5: "Get multimedia file info", 6: "", 7: "", 8: "", 9: "", 10: "",
+    5: "Get media file info", 6: "", 7: "Commands menu", 8: "", 9: "", 10: "",
     11: "", 12: "", 13: "", 14: "", 15: "", 16: "",
     17: "", 18: "", 19: "", 20: "", 21: "", 50: "Mount NFS disks"
 }
@@ -58,6 +58,14 @@ menu50 = {
     67: "mount ram disk " ,            68: "umount ram disk" ,
     69: "list NFS mounted"
 }
+menu70 = {
+    71: "Check the last reboot time", 72: "Example of DD copy" ,
+    73: "" ,         74: "" ,
+    75: "" ,         76: "" ,
+    77: "" ,       78: "" ,
+    79: "" ,
+}
+
 
 #=======================================================================================
 
@@ -71,6 +79,8 @@ def print_menu(mnu):
         menu_options = menu30
     elif mnu == 5:
         menu_options = menu50
+    elif mnu == 7:
+        menu_options = menu70
     else :
         print("\n\n")
         print("print_menu function menu level " + str(mnu) + " not found")
@@ -239,6 +249,8 @@ def get_user_input() :
                 mn_lev = 1
             elif mn_lev == 5 :
                 mn_lev = 1
+            elif mn_lev == 7 :
+                mn_lev = 1
             break
         elif (choice == '' ) :
             break
@@ -269,6 +281,10 @@ def get_user_input() :
                 if int_choice == 5 :
                     if mn_lev == 1 :
                         mediainfo()
+                    break
+                # ====================================================================
+                if int_choice == 7 :
+                    mn_lev = 7
                     break
                 # ====================================================================
                 elif int_choice == 31 :
@@ -468,6 +484,29 @@ def get_user_input() :
                         get_mount_list ()
                         void = input("Press a key to continue")
                         break
+                # ====================================================================
+                elif int_choice == 71 :
+                    if mn_lev == 7 :
+                        print('Check the last reboot time')
+                        print('last reboot|head -2')
+                        void = input("Press a key to continue")
+                        cmd = "last reboot|head -2"
+                        os.system(cmd)
+                        void = input("Press a key to continue")
+                        break
+                # ====================================================================
+                elif int_choice == 72 :
+                    if mn_lev == 7 :
+                        print('Example of DD copy')
+                        print("sudo dd bs=4M if=input of=output status=progress")
+                        print("sudo dd bs=4M if=/dev/sdd of=/path/file.img status=progress")
+                        void = input("Press a key to continue")
+                        # cmd = "last reboot|head -2"
+                        # os.system(cmd)
+                        # void = input("Press a key to continue")
+                        break
+
+
                 else :
                     mn_lev = mn_lev
                     #mn_lev = 1
