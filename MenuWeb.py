@@ -54,7 +54,7 @@ menu01 = {
     1: "Mount Rpi3B+Download", 2: "Umount Rpi3B+Download", 3: "Mount /var/www/html/mnt", 4: "Umount /var/www/html/mnt",
     5: "Mount /media/FreeNas", 6: "Umount /media/FreeNas", 7: "minidlna status", 8: "restart minidlna", 9: "hdparm",
     10: "ListDir (move all the series files in one dir) ",
-    11: "", 12: "", 13: "", 14: "", 15: "sudo mousepad /etc/minidlna.conf", 16: "",
+    11: "lighttpd status", 12: "lighttpd force-reload", 13: "", 14: "", 15: "sudo mousepad /etc/minidlna.conf", 16: "",
     17: "", 18: "", 19: "", 20: "", 21: "", 50: ""
 }
 
@@ -310,6 +310,21 @@ def get_user_input() :
                     if mn_lev == 1:
                         #print('UMount Phenom 2TbF on /media/2TbFb')
                         cmd = "/home/riky60/Shell/listdir.sh"
+                        os.system(cmd)
+                    break
+                # ====================================================================
+                if int_choice == 11 :
+                    if mn_lev == 1:
+                        #print('UMount Phenom 2TbF on /media/2TbFb')
+                        cmd = "sudo systemctl status lighttpd"
+                        os.system(cmd)
+                    break
+
+                # ====================================================================
+                if int_choice == 12 :
+                    if mn_lev == 1:
+                        #print('UMount Phenom 2TbF on /media/2TbFb')
+                        cmd = "sudo service lighttpd force-reload"
                         os.system(cmd)
                     break
 
@@ -590,4 +605,3 @@ mn_lev = 1
 while True :
     print_menu(mn_lev)
     get_user_input()
-
