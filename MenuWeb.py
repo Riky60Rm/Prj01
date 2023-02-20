@@ -294,8 +294,10 @@ def get_user_input() :
                         cmd = "sudo chmod g+rw /var/log/minidlna/minidlna.log"
                         os.system(cmd)
                         print('Changed permission on file /var/log/minidlna/minidlna.log')
-                        print('  group can now read and write.')
+                        print('  group can now read and write the file.')
+                        print('the permissions now are :')
                         cmd = "ls -l /var/log/minidlna/minidlna.log"
+                        print(" ")
                         os.system(cmd)
                         cmd = "sudo systemctl restart minidlna"
                         os.system(cmd)
