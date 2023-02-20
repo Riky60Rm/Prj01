@@ -291,9 +291,15 @@ def get_user_input() :
                 if int_choice == 8 :
                     if mn_lev == 1:
                         #print('UMount Phenom 2TbF on /media/2TbFb')
+                        cmd = "sudo chmod g+rw /var/log/minidlna/minidlna.log"
+                        os.system(cmd)
+                        print('Changed permission on file /var/log/minidlna/minidlna.log')
+                        print('  group can now read and write.')
+                        cmd = "ls -l /var/log/minidlna/minidlna.log"
+                        os.system(cmd)
                         cmd = "sudo systemctl restart minidlna"
                         os.system(cmd)
-                        void = input("Press a key to continue")
+                        void = input("minidlna restarted. Press a key to continue")
                     break
 
                 # ====================================================================
