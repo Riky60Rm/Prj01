@@ -15,7 +15,7 @@ from colorama import Fore, Back, Style
 import logging
 colorama.init()
 
-
+os.environ['TERM'] = "linux" # visible in this process + all children
 RELEASE_DATA = {}     #dictionary
 arch = platform.architecture()
 # item and row to hilight
