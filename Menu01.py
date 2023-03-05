@@ -196,8 +196,9 @@ def get_system_info () :
 
 # =======================================================================================
 def get_mount_list () :
+    print(" ")
     print('list of NFS mounted')
-    void = input("Press a key to continue")
+    #void = input("Press a key to continue")
     # rslt = os.system(cmd)
     myCmd = os.popen('mount | grep nfs[^d]').read()
     if myCmd.count("nfs") > 0:
@@ -222,8 +223,9 @@ def get_mount_list () :
     title = myCmdList[0]
     for ls in myCmdList :
         if ls.find("ramdsk") > 0 :
-            print(title)
-            print(ls)
+            print(" ")
+            print(title,Fore.GREEN + Style.BRIGHT)
+            print(ls,Style.RESET_ALL + Fore.RESET)
     # print("------------------")
     # print(myCmd)
 
@@ -265,7 +267,7 @@ def get_user_input() :
                 # ====================================================================
                 if int_choice == 2 :
                     if mn_lev == 1 :
-                        cmd = "xed /media/1TbF/320Gb/Varie/CartoleriaCigola.txt &"
+                        cmd = "xed /media/1TbF/320Gb/Varie/Roberto/CartoleriaCigola.txt &"
                         os.system(cmd)
 
                 # ====================================================================
