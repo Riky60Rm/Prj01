@@ -2,7 +2,7 @@
 implementation of a program to manage user choices
 
 """
-# cp /home/riky60/PycharmProjects/Prj01/Menu01.py  /home/riky60/Shell/Python
+# cp /home/riky60/PycharmProjects/Prj01/Bck01.py  /home/riky60/Shell/Python
 
 import csv
 import datetime
@@ -13,6 +13,7 @@ import platform
 import colorama
 from colorama import Fore, Back, Style
 import logging
+import subprocess
 colorama.init()
 
 
@@ -147,10 +148,17 @@ def Doc() :
     DirToSave = "/media/1TbF/300Gb/DOC"
     target = BckPath + "DOC." + BckDate + ".tar "
     cmd = "tar -cvf " + target + DirToSave
-    os.system(cmd)
-    logging.info('Created ' + target)
     # cmd = "7z a " + BckPath + "DOC." + BckDate + ".tar.7z " + BckPath +"DOC." +BckDate + ".tar"
     # os.system(cmd)
+    rc = os.system(cmd)
+    if rc != 0 :
+        print(" ")
+        print('Return Code:', rc, '\n')
+        logging.info(target + " created with error")
+        logging.info('Return Code:', rc, '\n')
+        void = input("Press a key to continue or Ctrl+C to abort")
+    else :
+        logging.info('Created ' + target)
 
 # =======================================================================================
 
@@ -160,8 +168,15 @@ def HelpTricks() :
     target = '"' + BckPath + "Help&Tricks." + BckDate + ".tar" + '"' + " "
     cmd = "tar -cvf " + target  + DirToSave
     # print(cmd)
-    os.system(cmd)
-    logging.info('Created ' + target)
+    rc = os.system(cmd)
+    if rc != 0 :
+        print(" ")
+        print('Return Code:', rc, '\n')
+        logging.info(target + " created with error")
+        logging.info('Return Code:', rc, '\n')
+        void = input("Press a key to continue or Ctrl+C to abort")
+    else :
+        logging.info('Created ' + target)
 
 # =======================================================================================
 
@@ -170,8 +185,15 @@ def BiosDrivers():
     target = '"' + BckPath + "Bios&Drivers." + BckDate + ".tar" + '"' + " "
     cmd = "tar -cvf " + target + DirToSave
     # print(cmd)
-    os.system(cmd)
-    logging.info('Created ' + target)
+    rc = os.system(cmd)
+    if rc != 0 :
+        print(" ")
+        print('Return Code:', rc, '\n')
+        logging.info(target + " created with error")
+        logging.info('Return Code:', rc, '\n')
+        void = input("Press a key to continue or Ctrl+C to abort")
+    else :
+        logging.info('Created ' + target)
 
 
  # =======================================================================================
@@ -181,8 +203,15 @@ def LavoriConsulenza():
     target = BckPath + "LavoriConsulenza." + BckDate + ".tar "
     cmd = "tar -cvf " + target + DirToSave
     # print(cmd)
-    os.system(cmd)
-    logging.info('Created ' + target)
+    rc = os.system(cmd)
+    if rc != 0 :
+        print(" ")
+        print('Return Code:', rc, '\n')
+        logging.info(target + " created with error")
+        logging.info('Return Code:', rc, '\n')
+        void = input("Press a key to continue or Ctrl+C to abort")
+    else :
+        logging.info('Created ' + target)
 
 # =======================================================================================
 
@@ -191,8 +220,15 @@ def Varie():
     target = BckPath + "Varie." + BckDate + ".tar "
     cmd = "tar -cvf " + target + DirToSave
     # print(cmd)
-    os.system(cmd)
-    logging.info('Created ' + target)
+    rc = os.system(cmd)
+    if rc != 0 :
+        print(" ")
+        print('Return Code:', rc, '\n')
+        logging.info(target + " created with error")
+        logging.info('Return Code:', rc, '\n')
+        void = input("Press a key to continue or Ctrl+C to abort")
+    else :
+        logging.info('Created ' + target)
 
 # =======================================================================================
 
@@ -203,8 +239,15 @@ def Disinformazione():
     target = BckPath + "Disinformazione." + BckDate + ".tar " + "--exclude=\"/media/1TbF/320Gb/Disinformazione/YouTube\" "
     cmd = "tar -cvf " + target + DirToSave
     # print(cmd)
-    os.system(cmd)
-    logging.info('Created ' + target)
+    rc = os.system(cmd)
+    if rc != 0 :
+        print(" ")
+        print('Return Code:', rc, '\n')
+        logging.info(target + " created with error")
+        logging.info('Return Code:', rc, '\n')
+        void = input("Press a key to continue or Ctrl+C to abort")
+    else :
+        logging.info('Created ' + target)
 
 # =======================================================================================
 
@@ -213,18 +256,33 @@ def Pgm():
     target = BckPath + "Pgm." + BckDate + ".tar "
     cmd = "tar -cvf " + target + DirToSave
     # print(cmd)
-    os.system(cmd)
-    logging.info('Created ' + target)
+    rc = os.system(cmd)
+    if rc != 0 :
+        print(" ")
+        print('Return Code:', rc, '\n')
+        logging.info(target + " created with error")
+        logging.info('Return Code:', rc, '\n')
+        void = input("Press a key to continue or Ctrl+C to abort")
+    else :
+        logging.info('Created ' + target)
 
 # =======================================================================================
 
 def riky60():
+
     DirToSave = "/home/riky60"
     target = BckPath + "riky60." + BckDate + ".tar "
     cmd = "tar -cvf " + target + DirToSave
     # print(cmd)
-    os.system(cmd)
-    logging.info('Created ' + target)
+    rc = os.system(cmd)
+    if rc != 0 :
+        print(" ")
+        print('Return Code:', rc, '\n')
+        logging.info(target + " created with error")
+        logging.info('Return Code:', rc, '\n')
+        void = input("Press a key to continue or Ctrl+C to abort")
+    else :
+        logging.info('Created ' + target)
 # =======================================================================================
 
 def user01():
