@@ -27,7 +27,7 @@ def createTable() :
         -- table of commands for menu item - lvl is the foreign key with menu_tbl
         "lvl"	INTEGER,
         "lvln"	INTEGER,
-        "cmd.type"	TEXT, -- command type C for command , P for print , I for input
+        "cmdtype"	TEXT, -- command type C for command , P for print , I for input
         "cmd"	TEXT
         );
     """
@@ -108,8 +108,9 @@ def insert_rows() :
 
 
     multiple_columns = [(1, 1, 'C', 'xed /media/1TbF/320Gb/Varie/Ebay/Indirizzo.txt &'),
-                        (2, 1, 'P', 'xed /media/1TbF/320Gb/Varie/CartoleriaCigola.txt &'),
-                        (3, 1, 'P', 'Press a key to continue'),
+                        (2, 1, 'P', 'Press a key to continue'),
+                        (1, 2, 'P', 'xed /media/1TbF/320Gb/Varie/CartoleriaCigola.txt &'),
+                        (2, 2, 'P', 'Press a key to continue'),
                         (4, 1, 'P', 'Type a word')
                         ]
 

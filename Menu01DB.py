@@ -50,6 +50,26 @@ def leggiDBmenu(level) :
     conn.close()
     return mydict
 
+#=======================================================================================
+def get_cmd(level) :
+
+    db_file = "/home/riky60/PycharmProjects/Prj01/Menu.db"
+    conn = None
+    try:
+        conn = sqlite3.connect(db_file)
+    except sqlite3.Error as e:
+        print(e)
+        exit(12)
+    cur = conn.cursor()
+    mydict = {}
+    for row in cur.execute("select lvl, cmdtype, cmd  FROM menucmd_tbl where lvln = ? order by lvl", str(level)) :
+        #print(row[0] , row[1])
+        mydict[row[0]] = [row[1],row[2]]
+    #print(mydict)
+    conn.close()
+    return mydict
+
+
 
 #=======================================================================================
 
@@ -208,7 +228,11 @@ def get_user_input() :
 
                 if int_choice == 1 :
                     if mn_lev == 1 :
-                        cmd = "xed /media/1TbF/320Gb/Varie/Ebay/Indirizzo.txt &"
+                        # cmd = "xed /media/1TbF/320Gb/Varie/Ebay/Indirizzo.txt &"
+                        cmd = get_cmd(int_choice)
+                        for key, value in cmd :
+                            print(key)
+                            print(value)
                         os.system(cmd)
                 # ====================================================================
                 if int_choice == 2 :
