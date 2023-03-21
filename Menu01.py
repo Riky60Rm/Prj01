@@ -126,11 +126,19 @@ def print_menu(mnu):
 
 #=======================================================================================
 def mediainfo() :
-    print("Get multimedia file info")
-    print("  ")
-    fileinfo = input("Please type the file name with full path ")
-    cmd = "mediainfo " + fileinfo
-    print(cmd)
+    import tkinter as tk
+    from tkinter import filedialog
+    root = tk.Tk()
+    root.withdraw()  # hide the root window
+    # show the file chooser dialog and get the selected file
+    file_path = filedialog.askopenfilename()
+    # print the selected file path
+    #print(file_path)
+    #print("Get multimedia file info")
+    #print("  ")
+    #fileinfo = input("Please type the file name with full path ")
+    cmd = "mediainfo " + '"' + file_path + '"'
+    #print(cmd)
     os.system(cmd)
     void = input("Press a key to continue")
 
@@ -315,7 +323,8 @@ def get_user_input() :
                     if mn_lev == 5 :
                         print('Mount Raspberry Pi  on /media/Rpi3B+Download')
                         void = input("Press a key to continue")
-                        cmd = "echo \"riky60\" | sudo -S mount -vvvv -o nfsvers=4 192.168.1.164:/ /media/Rpi3B+Download 1>/dev/null 2>/dev/null"
+                        # cmd = "echo \"riky60\" | sudo -S mount -vvvv -o nfsvers=4 192.168.1.164:/ /media/Rpi3B+Download 1>/dev/null 2>/dev/null"
+                        cmd = "echo \"riky60\" | sudo -S mount -vvvv -o nfsvers=4 192.168.1.155:/ /media/Rpi3B+Download 1>/dev/null 2>/dev/null"
                         os.system(cmd)
                         void = input("Press a key to continue")
                         break
