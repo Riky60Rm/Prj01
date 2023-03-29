@@ -237,7 +237,9 @@ def get_user_input() :
 
                 if int_choice == 1 :
                     if mn_lev == 1 :
-                        cmd = "sudo mount 192.168.1.164:/ /media/Rpi3B+Download"
+                        # raspi4Web-Dlna
+                        cmd = "sudo mount -vvvv -o nfsvers=4 192.168.1.155:/ /media/Rpi3B+Download"
+                        #cmd = "sudo mount 192.168.1.164:/ /media/Rpi3B+Download"
                         os.system(cmd)
                 # ====================================================================
                 if int_choice == 2 :
@@ -248,7 +250,8 @@ def get_user_input() :
                 # ====================================================================
                 if int_choice == 3 :
                     if mn_lev == 1:
-                        cmd = "sudo mount 192.168.1.164:/ /var/www/html/mnt"
+                        #cmd = "sudo mount 192.168.1.164:/ /var/www/html/mnt"
+                        cmd = "sudo mount -vvvv -o nfsvers=4 192.168.1.155:/ /var/www/html/mnt"
                         os.system(cmd)
                         void = input("Press a key to continue")
                     break
@@ -297,7 +300,6 @@ def get_user_input() :
                         print('  group can now read and write the file.')
                         print('the permissions now are :')
                         cmd = "ls -l /var/log/minidlna/minidlna.log"
-                        print(" ")
                         os.system(cmd)
                         cmd = "sudo systemctl restart minidlna"
                         os.system(cmd)
